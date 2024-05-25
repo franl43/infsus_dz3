@@ -20,12 +20,26 @@ public class Vozilo {
     @Column(name = "uloga")
     private String uloga;
 
-    //ovo ne znam kak da spojim s adresom
+    @Embedded
+    private AdresaId adresaId;
+
     @ManyToOne
-    @JoinColumn(name = "adresaid", referencedColumnName = "adresaid")
+    @JoinColumns({
+            @JoinColumn(name = "grad", referencedColumnName = "grad", insertable = false, updatable = false),
+            @JoinColumn(name = "p_broj", referencedColumnName = "p_broj", insertable = false, updatable = false),
+            @JoinColumn(name = "naziv", referencedColumnName = "naziv", insertable = false, updatable = false)
+    })
     private Adresa adresa;
 
     public Vozilo() {
+    }
+
+    public Vozilo(String registracija, String status, int kapacitet, String uloga, Adresa adresa) {
+        this.registracija = registracija;
+        this.status = status;
+        this.kapacitet = kapacitet;
+        this.uloga = uloga;
+        this.adresa = adresa;
     }
 
     public String getRegistracija() {
