@@ -12,38 +12,38 @@ public class Izvjestaj {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "izvjestajid")
-    private long izvjestajId;
+    private long izvjestajid;
 
     @Column(name = "sadrzaj")
     private String sadrzaj;
 
-    @Column(name = "dat_vr")
-    private Date dat_vr;
+    @Column(name = "datvr")
+    private Date datvr;
 
     @ManyToOne
     @JoinColumn(name = "intervencijaid", referencedColumnName = "intervencijaid")
     private Intervencija intervencija;
 
     @ManyToOne
-    @JoinColumn(name = "korisnicko_ime", referencedColumnName = "korisnicko_ime")
-    private ClanHitneSluzbe clanHitneSluzbe;
+    @JoinColumn(name = "korisnickoime", referencedColumnName = "korisnickoime")
+    private ClanHitneSluzbe clanhitnesluzbe;
 
     public Izvjestaj() {}
 
-    public Izvjestaj(long izvjestajId, String sadrzaj, Date dat_vr, Intervencija intervencija, ClanHitneSluzbe clanHitneSluzbe) {
-        this.izvjestajId = izvjestajId;
+    public Izvjestaj(long izvjestajid, String sadrzaj, Date datvr, Intervencija intervencija, ClanHitneSluzbe clanhitnesluzbe) {
+        this.izvjestajid = izvjestajid;
         this.sadrzaj = sadrzaj;
-        this.dat_vr = dat_vr;
+        this.datvr = datvr;
         this.intervencija = intervencija;
-        this.clanHitneSluzbe = clanHitneSluzbe;
+        this.clanhitnesluzbe = clanhitnesluzbe;
     }
 
     public long getIzvjestajId() {
-        return izvjestajId;
+        return izvjestajid;
     }
 
-    public void setIzvjestajId(long izvjestajId) {
-        this.izvjestajId = izvjestajId;
+    public void setIzvjestajId(long izvjestajid) {
+        this.izvjestajid = izvjestajid;
     }
 
     public String getSadrzaj() {
@@ -54,12 +54,12 @@ public class Izvjestaj {
         this.sadrzaj = sadrzaj;
     }
 
-    public Date getDat_vr() {
-        return dat_vr;
+    public Date getDatVr() {
+        return datvr;
     }
 
-    public void setDat_vr(Date dat_vr) {
-        this.dat_vr = dat_vr;
+    public void setDat_vr(Date datvr) {
+        this.datvr = datvr;
     }
 
     public Intervencija getIntervencija() {
@@ -71,21 +71,21 @@ public class Izvjestaj {
     }
 
     public ClanHitneSluzbe getClanHitneSluzbe() {
-        return clanHitneSluzbe;
+        return clanhitnesluzbe;
     }
 
-    public void setClanHitneSluzbe(ClanHitneSluzbe clanHitneSluzbe) {
-        this.clanHitneSluzbe = clanHitneSluzbe;
+    public void setClanHitneSluzbe(ClanHitneSluzbe clanhitnesluzbe) {
+        this.clanhitnesluzbe = clanhitnesluzbe;
     }
 
     @Override
     public String toString() {
         return "Izvjestaj{" +
-                "izvjestajId=" + izvjestajId +
+                "izvjestajId=" + izvjestajid +
                 ", sadrzaj='" + sadrzaj + '\'' +
-                ", dat_vr=" + dat_vr +
+                ", dat_vr=" + datvr +
                 ", intervencija=" + intervencija +
-                ", clanHitneSluzbe=" + clanHitneSluzbe +
+                ", clanHitneSluzbe=" + clanhitnesluzbe +
                 '}';
     }
 
@@ -93,11 +93,11 @@ public class Izvjestaj {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Izvjestaj izvjestaj)) return false;
-        return izvjestajId == izvjestaj.izvjestajId && Objects.equals(sadrzaj, izvjestaj.sadrzaj) && Objects.equals(dat_vr, izvjestaj.dat_vr) && Objects.equals(intervencija, izvjestaj.intervencija) && Objects.equals(clanHitneSluzbe, izvjestaj.clanHitneSluzbe);
+        return izvjestajid == izvjestaj.izvjestajid && Objects.equals(sadrzaj, izvjestaj.sadrzaj) && Objects.equals(datvr, izvjestaj.datvr) && Objects.equals(intervencija, izvjestaj.intervencija) && Objects.equals(clanhitnesluzbe, izvjestaj.clanhitnesluzbe);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(izvjestajId, sadrzaj, dat_vr, intervencija, clanHitneSluzbe);
+        return Objects.hash(izvjestajid, sadrzaj, datvr, intervencija, clanhitnesluzbe);
     }
 }

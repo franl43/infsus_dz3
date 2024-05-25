@@ -10,14 +10,14 @@ import java.util.Objects;
 public class ZoveId implements Serializable {
 
     private String oib;
-    private Long centarId;
+    private Long centarid;
     private Date dat_vr;
 
     public ZoveId() {}
 
     public ZoveId(String oib, Long centarId) {
         this.oib = oib;
-        this.centarId = centarId;
+        this.centarid = centarId;
         this.dat_vr = new Date();
     }
 
@@ -30,11 +30,11 @@ public class ZoveId implements Serializable {
     }
 
     public Long getCentarId() {
-        return centarId;
+        return centarid;
     }
 
-    public void setCentarId(Long centarId) {
-        this.centarId = centarId;
+    public void setCentarId(Long centarid) {
+        this.centarid = centarid;
     }
 
     public Date getDat_vr() {
@@ -49,11 +49,11 @@ public class ZoveId implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof ZoveId zoveId)) return false;
-        return Objects.equals(oib, zoveId.oib) && Objects.equals(centarId, zoveId.centarId) && Objects.equals(dat_vr, zoveId.dat_vr);
+        return Objects.equals(oib, zoveId.oib) && Objects.equals(centarid, zoveId.centarid) && Objects.equals(dat_vr, zoveId.dat_vr);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(oib, centarId, dat_vr);
+        return Objects.hash(oib, centarid, dat_vr);
     }
 }

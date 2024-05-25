@@ -9,13 +9,13 @@ import java.util.Objects;
 public class OdgovaraNaId implements Serializable {
 
     private String registracija;
-    private long intervencijaId;
+    private long intervencijaid;
 
     public OdgovaraNaId() {}
 
-    public OdgovaraNaId(String registracija, long intervencijaId) {
+    public OdgovaraNaId(String registracija, long intervencijaid) {
         this.registracija = registracija;
-        this.intervencijaId = intervencijaId;
+        this.intervencijaid = intervencijaid;
     }
 
     public String getRegistracija() {
@@ -27,22 +27,22 @@ public class OdgovaraNaId implements Serializable {
     }
 
     public long getIntervencijaId() {
-        return intervencijaId;
+        return intervencijaid;
     }
 
     public void setIntervencijaId(long intervencijaId) {
-        this.intervencijaId = intervencijaId;
+        this.intervencijaid = intervencijaId;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof OdgovaraNaId that)) return false;
-        return intervencijaId == that.intervencijaId && Objects.equals(registracija, that.registracija);
+        return intervencijaid == that.intervencijaid && Objects.equals(registracija, that.registracija);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(registracija, intervencijaId);
+        return Objects.hash(registracija, intervencijaid);
     }
 }

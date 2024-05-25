@@ -10,11 +10,11 @@ import java.util.Objects;
 public class Dispecer {
 
     @Id
-    @Column(name = "korisnicko_ime")
-    private String korisnicko_ime;
+    @Column(name = "korisnickoime")
+    private String korisnickoime;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="korisnicko_ime", referencedColumnName = "korisnicko_ime")
+    @JoinColumn(name="korisnickoime", referencedColumnName = "korisnickoime")
     @JsonIgnore
     private Korisnik korisnik;
 
@@ -24,17 +24,17 @@ public class Dispecer {
 
     public Dispecer() {}
 
-    public Dispecer(String korisnicko_ime, Centar centar) {
-        this.korisnicko_ime = korisnicko_ime;
+    public Dispecer(String korisnickoime, Centar centar) {
+        this.korisnickoime = korisnickoime;
         this.centar = centar;
     }
 
-    public String getKorisnicko_ime() {
-        return korisnicko_ime;
+    public String getKorisnickoIme() {
+        return korisnickoime;
     }
 
-    public void setKorisnicko_ime(String korisnicko_ime) {
-        this.korisnicko_ime = korisnicko_ime;
+    public void setKorisnickoIme(String korisnickoime) {
+        this.korisnickoime = korisnickoime;
     }
 
     public Korisnik getKorisnik() {
@@ -56,7 +56,7 @@ public class Dispecer {
     @Override
     public String toString() {
         return "Dispecer{" +
-                "korisnicko_ime='" + korisnicko_ime + '\'' +
+                "korisnicko_ime='" + korisnickoime + '\'' +
                 ", korisnik=" + korisnik +
                 ", centar=" + centar +
                 '}';
@@ -66,11 +66,11 @@ public class Dispecer {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Dispecer dispecer)) return false;
-        return Objects.equals(korisnicko_ime, dispecer.korisnicko_ime) && Objects.equals(korisnik, dispecer.korisnik) && Objects.equals(centar, dispecer.centar);
+        return Objects.equals(korisnickoime, dispecer.korisnickoime) && Objects.equals(korisnik, dispecer.korisnik) && Objects.equals(centar, dispecer.centar);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(korisnicko_ime, korisnik, centar);
+        return Objects.hash(korisnickoime, korisnik, centar);
     }
 }

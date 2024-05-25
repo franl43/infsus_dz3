@@ -12,17 +12,24 @@ public class Intervencija {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "intervencijaid")
-    private long intervencijaId;
+    private long intervencijaid;
 
-    @Column(name = "dat_vr")
-    private Date dat_vr;
+    @Column(name = "datvr")
+    private Date datvr;
 
     @Column(name = "opis")
     private String opis;
 
     //ovo ne znam kak da spojim s adresom
+    @Embedded
+    private AdresaId adresaId;
+
     @ManyToOne
-    @JoinColumn(name = "adresaid", referencedColumnName = "adresaid")
+    @JoinColumns({
+            @JoinColumn(name = "grad", referencedColumnName = "grad", insertable = false, updatable = false),
+            @JoinColumn(name = "pbroj", referencedColumnName = "pbroj", insertable = false, updatable = false),
+            @JoinColumn(name = "naziv", referencedColumnName = "naziv", insertable = false, updatable = false)
+    })
     private Adresa adresa;
 
     @ManyToOne
@@ -33,19 +40,19 @@ public class Intervencija {
     }
 
     public long getIntervencijaId() {
-        return intervencijaId;
+        return intervencijaid;
     }
 
-    public void setIntervencijaId(long intervencijaId) {
-        this.intervencijaId = intervencijaId;
+    public void setIntervencijaId(long intervencijaid) {
+        this.intervencijaid = intervencijaid;
     }
 
-    public Date getDat_vr() {
-        return dat_vr;
+    public Date getDatVr() {
+        return datvr;
     }
 
-    public void setDat_vr(Date dat_vr) {
-        this.dat_vr = dat_vr;
+    public void setDatVr(Date datvr) {
+        this.datvr = datvr;
     }
 
     public String getOpis() {

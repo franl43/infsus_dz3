@@ -10,11 +10,11 @@ import java.util.Objects;
 public class ClanHitneSluzbe {
 
     @Id
-    @Column(name = "korisnicko_ime")
-    private String korisnicko_ime;
+    @Column(name = "korisnickoime")
+    private String korisnickoime;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="korisnicko_ime", referencedColumnName = "korisnicko_ime")
+    @JoinColumn(name="korisnickoime", referencedColumnName = "korisnickoime")
     @JsonIgnore
     private Korisnik korisnik;
 
@@ -24,18 +24,16 @@ public class ClanHitneSluzbe {
 
     public ClanHitneSluzbe() {}
 
-    public ClanHitneSluzbe(String korisnicko_ime, Korisnik korisnik, Vozilo vozilo) {
-        this.korisnicko_ime = korisnicko_ime;
+    public ClanHitneSluzbe(String korisnickoime, Korisnik korisnik, Vozilo vozilo) {
+        this.korisnickoime = korisnickoime;
         this.korisnik = korisnik;
         this.vozilo = vozilo;
     }
 
-    public String getKorisnicko_ime() {
-        return korisnicko_ime;
-    }
+    public String getKorisnickoIme() { return korisnickoime; }
 
-    public void setKorisnicko_ime(String korisnicko_ime) {
-        this.korisnicko_ime = korisnicko_ime;
+    public void setKorisnickoIme(String korisnicko_ime) {
+        this.korisnickoime = korisnicko_ime;
     }
 
     public Korisnik getKorisnik() {
@@ -57,7 +55,7 @@ public class ClanHitneSluzbe {
     @Override
     public String toString() {
         return "ClanHitneSluzbe{" +
-                "korisnicko_ime='" + korisnicko_ime + '\'' +
+                "korisnicko_ime='" + korisnickoime + '\'' +
                 ", korisnik=" + korisnik +
                 ", vozilo=" + vozilo +
                 '}';
@@ -67,11 +65,11 @@ public class ClanHitneSluzbe {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof ClanHitneSluzbe that)) return false;
-        return Objects.equals(korisnicko_ime, that.korisnicko_ime) && Objects.equals(korisnik, that.korisnik) && Objects.equals(vozilo, that.vozilo);
+        return Objects.equals(korisnickoime, that.korisnickoime) && Objects.equals(korisnik, that.korisnik) && Objects.equals(vozilo, that.vozilo);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(korisnicko_ime, korisnik, vozilo);
+        return Objects.hash(korisnickoime, korisnik, vozilo);
     }
 }

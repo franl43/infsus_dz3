@@ -12,7 +12,7 @@ public class Zove implements Serializable {
 
     @EmbeddedId
     @JsonIgnore
-    private ZoveId zoveId = new ZoveId();
+    private ZoveId zoveid = new ZoveId();
 
     @ManyToOne()
     @JoinColumn(name = "oib",referencedColumnName = "oib", insertable = false, updatable = false)
@@ -24,18 +24,18 @@ public class Zove implements Serializable {
 
     public Zove() {}
 
-    public Zove(ZoveId zoveId, Pozivatelj pozivatelj, Centar centar) {
-        this.zoveId = zoveId;
+    public Zove(ZoveId zoveid, Pozivatelj pozivatelj, Centar centar) {
+        this.zoveid = zoveid;
         this.pozivatelj = pozivatelj;
         this.centar = centar;
     }
 
     public ZoveId getZoveId() {
-        return zoveId;
+        return zoveid;
     }
 
-    public void setZoveId(ZoveId zoveId) {
-        this.zoveId = zoveId;
+    public void setZoveId(ZoveId zoveid) {
+        this.zoveid = zoveid;
     }
 
     public Pozivatelj getPozivatelj() {

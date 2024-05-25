@@ -26,7 +26,7 @@ public class Vozilo {
     @ManyToOne
     @JoinColumns({
             @JoinColumn(name = "grad", referencedColumnName = "grad", insertable = false, updatable = false),
-            @JoinColumn(name = "p_broj", referencedColumnName = "p_broj", insertable = false, updatable = false),
+            @JoinColumn(name = "pbroj", referencedColumnName = "pbroj", insertable = false, updatable = false),
             @JoinColumn(name = "naziv", referencedColumnName = "naziv", insertable = false, updatable = false)
     })
     private Adresa adresa;

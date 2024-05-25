@@ -10,14 +10,14 @@ import java.util.Objects;
 public class AdresaId implements Serializable {
 
     private String grad;
-    private int p_broj;
+    private int pbroj;
     private String naziv;
 
     public AdresaId() {}
 
-    public AdresaId(String grad, int p_broj, String naziv) {
+    public AdresaId(String grad, int pbroj, String naziv) {
         this.grad = grad;
-        this.p_broj = p_broj;
+        this.pbroj = pbroj;
         this.naziv = naziv;
     }
 
@@ -29,12 +29,12 @@ public class AdresaId implements Serializable {
         this.grad = grad;
     }
 
-    public int getP_broj() {
-        return p_broj;
+    public int getPBroj() {
+        return pbroj;
     }
 
-    public void setP_broj(int p_broj) {
-        this.p_broj = p_broj;
+    public void setPBroj(int pbroj) {
+        this.pbroj = pbroj;
     }
 
     public String getNaziv() {
@@ -49,11 +49,11 @@ public class AdresaId implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof AdresaId adresaId)) return false;
-        return p_broj == adresaId.p_broj && Objects.equals(grad, adresaId.grad) && Objects.equals(naziv, adresaId.naziv);
+        return pbroj == adresaId.pbroj && Objects.equals(grad, adresaId.grad) && Objects.equals(naziv, adresaId.naziv);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(grad, p_broj, naziv);
+        return Objects.hash(grad, pbroj, naziv);
     }
 }

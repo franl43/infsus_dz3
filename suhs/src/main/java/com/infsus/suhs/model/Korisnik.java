@@ -10,8 +10,8 @@ import java.util.Objects;
 public class Korisnik {
 
     @Id
-    @Column(name = "korisnicko_ime")
-    private String korisnicko_ime;
+    @Column(name = "korisnickoime")
+    private String korisnickoime;
 
     @Column(name = "ime")
     private String ime;
@@ -29,8 +29,8 @@ public class Korisnik {
 
     public Korisnik() {}
 
-    public Korisnik(String korisnicko_ime, String ime, String prezime, String lozinka, String uloga) {
-        this.korisnicko_ime = korisnicko_ime;
+    public Korisnik(String korisnickoime, String ime, String prezime, String lozinka, String uloga) {
+        this.korisnickoime = korisnickoime;
         this.ime = ime;
         this.prezime = prezime;
         this.lozinka = lozinka;
@@ -38,11 +38,11 @@ public class Korisnik {
     }
 
     public String getKorisnicko_ime() {
-        return korisnicko_ime;
+        return korisnickoime;
     }
 
-    public void setKorisnicko_ime(String korisnicko_ime) {
-        this.korisnicko_ime = korisnicko_ime;
+    public void setKorisnickoIme(String korisnickoime) {
+        this.korisnickoime = korisnickoime;
     }
 
     public String getIme() {
@@ -80,7 +80,7 @@ public class Korisnik {
     @Override
     public String toString() {
         return "Korisnik{" +
-                "korisnicko_ime='" + korisnicko_ime + '\'' +
+                "korisnicko_ime='" + korisnickoime + '\'' +
                 ", ime='" + ime + '\'' +
                 ", prezime='" + prezime + '\'' +
                 //", lozinka='" + lozinka + '\'' +
@@ -92,11 +92,11 @@ public class Korisnik {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Korisnik korisnik)) return false;
-        return Objects.equals(korisnicko_ime, korisnik.korisnicko_ime) && Objects.equals(ime, korisnik.ime) && Objects.equals(prezime, korisnik.prezime) && Objects.equals(lozinka, korisnik.lozinka) && Objects.equals(uloga, korisnik.uloga);
+        return Objects.equals(korisnickoime, korisnik.korisnickoime) && Objects.equals(ime, korisnik.ime) && Objects.equals(prezime, korisnik.prezime) && Objects.equals(lozinka, korisnik.lozinka) && Objects.equals(uloga, korisnik.uloga);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(korisnicko_ime, ime, prezime, lozinka, uloga);
+        return Objects.hash(korisnickoime, ime, prezime, lozinka, uloga);
     }
 }

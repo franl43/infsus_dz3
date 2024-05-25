@@ -13,7 +13,7 @@ public class Centar {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "centarid")
-    private long centarId;
+    private long centarid;
 
     @Column(name = "broj")
     @JsonIgnore
@@ -46,11 +46,11 @@ public class Centar {
     }
 
     public long getCentarId() {
-        return centarId;
+        return centarid;
     }
 
-    public void setCentarId(long centarId) {
-        this.centarId = centarId;
+    public void setCentarId(long centarid) {
+        this.centarid = centarid;
     }
 
     public String getBroj() {
@@ -72,7 +72,7 @@ public class Centar {
     @Override
     public String toString() {
         return "Centar{" +
-                "centarId=" + centarId +
+                "centarId=" + centarid +
                 ", broj='" + broj + '\'' +
                 ", kapacitet=" + kapacitet +
                 '}';
@@ -82,11 +82,11 @@ public class Centar {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Centar centar)) return false;
-        return centarId == centar.centarId && kapacitet == centar.kapacitet && Objects.equals(broj, centar.broj);
+        return centarid == centar.centarid && kapacitet == centar.kapacitet && Objects.equals(broj, centar.broj);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(centarId, broj, kapacitet);
+        return Objects.hash(centarid, broj, kapacitet);
     }
 }
