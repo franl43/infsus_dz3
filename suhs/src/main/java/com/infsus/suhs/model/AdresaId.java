@@ -29,11 +29,11 @@ public class AdresaId implements Serializable {
         this.grad = grad;
     }
 
-    public int getPBroj() {
+    public int getPbroj() {
         return pbroj;
     }
 
-    public void setPBroj(int pbroj) {
+    public void setPbroj(int pbroj) {
         this.pbroj = pbroj;
     }
 
@@ -55,5 +55,10 @@ public class AdresaId implements Serializable {
     @Override
     public int hashCode() {
         return Objects.hash(grad, pbroj, naziv);
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%s, %d %s", naziv, pbroj, grad);
     }
 }

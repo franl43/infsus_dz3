@@ -5,18 +5,26 @@ import com.infsus.suhs.service.KorisnikService;
 import com.infsus.suhs.utils.KorisnikJson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
 
-@RestController
-@CrossOrigin(origins = {"http://localhost:3000/"}, allowCredentials = "true")
+@Controller
 @RequestMapping("/korisnik")
 public class KorisnikController {
 
     @Autowired
     private KorisnikService korisnikService;
+
+    @GetMapping("/getAll")
+    public String getAllKorisnik(Model model) {
+        List<Korisnik> korisnici = korisnikService.getAllKorisnik();
+        model.addAttribute("korisnici", korisnikService.getAllKorisnik());
+        return "Korisnik/Index";
+    }
 
     //ovo mozda treba popravit
     @PutMapping("/addNew")
@@ -37,11 +45,6 @@ public class KorisnikController {
     @GetMapping("/getByKorisnickoIme/{korisnicko_ime}")
     public Optional<Korisnik> getKorisnikByKorisnickoIme(@PathVariable(value = "korisnicko_ime") String korisnicko_ime) {
         return korisnikService.getKorisnikByKorisnickoIme(korisnicko_ime);
-    }
-
-    @GetMapping("/getAll")
-    public List<Korisnik> getAllKorisnik() {
-        return korisnikService.getAllKorisnik();
     }
 
     @DeleteMapping("/delete/{korisnicko_ime}")

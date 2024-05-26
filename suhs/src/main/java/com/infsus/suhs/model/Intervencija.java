@@ -2,7 +2,9 @@ package com.infsus.suhs.model;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 //nije dovrseno zbog adrese
 @Entity
@@ -22,7 +24,7 @@ public class Intervencija {
 
     //ovo ne znam kak da spojim s adresom
     @Embedded
-    private AdresaId adresaId;
+    private AdresaId adresaid;
 
     @ManyToOne
     @JoinColumns({
@@ -36,22 +38,36 @@ public class Intervencija {
     @JoinColumn(name = "centarid", referencedColumnName = "centarid")
     private Centar centar;
 
+    /*--------------------------------------------------------------------------------*/
+    @OneToMany(mappedBy = "intervencija")
+    private List<Izvjestaj> izvjestaji = new ArrayList<>();
+
+    public List<Izvjestaj> getIzvjestaji() {
+        return izvjestaji;
+    }
+
+    public void setIzvjestaji(List<Izvjestaj> izvjestaji) {
+        this.izvjestaji = izvjestaji;
+    }
+
+    /*--------------------------------------------------------------------------------*/
+
     public Intervencija() {
     }
 
-    public long getIntervencijaId() {
+    public long getIntervencijaid() {
         return intervencijaid;
     }
 
-    public void setIntervencijaId(long intervencijaid) {
+    public void setIntervencijaid(long intervencijaid) {
         this.intervencijaid = intervencijaid;
     }
 
-    public Date getDatVr() {
+    public Date getDatvr() {
         return datvr;
     }
 
-    public void setDatVr(Date datvr) {
+    public void setDatvr(Date datvr) {
         this.datvr = datvr;
     }
 
@@ -63,11 +79,39 @@ public class Intervencija {
         this.opis = opis;
     }
 
+    public AdresaId getAdresaid() {
+        return adresaid;
+    }
+
+    public void setAdresaid(AdresaId adresaid) {
+        this.adresaid = adresaid;
+    }
+
+    public Adresa getAdresa() {
+        return adresa;
+    }
+
+    public void setAdresa(Adresa adresa) {
+        this.adresa = adresa;
+    }
+
     public Centar getCentar() {
         return centar;
     }
 
     public void setCentar(Centar centar) {
         this.centar = centar;
+    }
+
+    @Override
+    public String toString() {
+        return "Intervencija{" +
+                "intervencijaid=" + intervencijaid +
+                ", datvr=" + datvr +
+                ", opis='" + opis + '\'' +
+                ", adresaid=" + adresaid +
+                ", adresa=" + adresa +
+                ", centar=" + centar +
+                '}';
     }
 }

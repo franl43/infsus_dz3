@@ -45,11 +45,11 @@ public class Centar {
         this.kapacitet = kapacitet;
     }
 
-    public long getCentarId() {
+    public long getCentarid() {
         return centarid;
     }
 
-    public void setCentarId(long centarid) {
+    public void setCentarid(long centarid) {
         this.centarid = centarid;
     }
 
@@ -70,15 +70,6 @@ public class Centar {
     }
 
     @Override
-    public String toString() {
-        return "Centar{" +
-                "centarId=" + centarid +
-                ", broj='" + broj + '\'' +
-                ", kapacitet=" + kapacitet +
-                '}';
-    }
-
-    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Centar centar)) return false;
@@ -89,4 +80,10 @@ public class Centar {
     public int hashCode() {
         return Objects.hash(centarid, broj, kapacitet);
     }
+
+    @Override
+    public String toString() {
+        return "Dispečerski Centar" + centarid;
+    }
+
 }
