@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INTERVENCIJA</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Intervencija</h1>
+        <div class="d-flex justify-content-between mb-3">
+            <button class="btn btn-primary">Prethodni</button>
+            <button class="btn btn-primary">Sljedeći</button>
+        </div>
+
+        <form>
+            <div class="form-group">
+                <label for="datumVrijeme">Datum i vrijeme</label>
+                <input type="datetime-local" class="form-control" id="datumVrijeme">
+            </div>
+
+            <div class="form-group">
+                <label for="opis">Opis</label>
+                <textarea class="form-control" id="opis" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="grad">Grad</label>
+                <input type="text" class="form-control" id="grad">
+            </div>
+            <div class="form-group">
+                <label for="postanskiBroj">Poštanski broj</label>
+                <input type="number" class="form-control" id="postanskiBroj">
+            </div>
+            <div class="form-group">
+                <label for="naziv">Naziv</label>
+                <input type="text" class="form-control" id="naziv">
+            </div>
+            <div class="form-group">
+                <label for="centar">Centar</label>
+                <select class="form-control" id="centar">
+                    <option value="centar1">Centar 1</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="vozilo">Vozilo</label>
+                <select class="form-control" id="vozilo" multiple>
+                    <option>Opcija 1</option>
+                    <option>Opcija 2</option>
+                </select>
+            </div>
+
+            <div class="d-flex justify-content-between mt-3">
+                <button type="submit" class="btn btn-success">Spremi</button>
+                <button type="reset" class="btn btn-danger">Obriši</button>
+            </div>
+
+            <hr style="margin-top: 20px; ">
+        </form>
+
+        <h2 class="text-center">Izvještaji</h2>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">rbr</th>
+                <th scope="col">Sadržaj</th>
+                <th scope="col">Datum i vrijeme</th>
+                <th scope="col">Popunio</th>
+                <th scope="col">Akcije</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>Prvi izvještaj</td>
+                <td>2024-05-26 10:00</td>
+                <td>admin</td>
+                <td>
+                    <button class="btn btn-primary">Uredi</button>
+                    <button class="btn btn-danger">Obriši</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
