@@ -7,6 +7,7 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
+<header th:insert="Common/Header :: header"></header>
 <div class="container mt-5">
     <h1 class="text-center">Intervencija</h1>
     <div class="d-flex justify-content-between mb-3">
@@ -14,33 +15,34 @@
         <button class="btn btn-primary">Sljedeći</button>
     </div>
 
-    <form th:action="@{/update}" th:object="${intervencija}">
+    <form action="#" method="post" th:action="@{'/intervencija/'+${intervencija.intervencijaid}}" th:object="${intervencija}">
         <div class="form-group">
             <label for="datumVrijeme">Datum i vrijeme</label>
-            <input type="datetime-local" class="form-control" id="datumVrijeme" th:field="*{datvr}">
+            <input type="datetime-local" class="form-control" id="datumVrijeme" th:field="${intervencija.datvr}"/>
         </div>
 
         <div class="form-group">
             <label for="opis">Opis</label>
-            <textarea class="form-control" id="opis" rows="3" th:field="*{opis}"></textarea>
+            <textarea class="form-control" id="opis" rows="3" th:field="${intervencija.opis}"></textarea>
         </div>
         <div class="form-group">
             <label for="grad">Grad</label>
-            <input type="text" class="form-control" id="grad" th:field="*{adresaid.grad}">
+            <input type="text" class="form-control" id="grad" th:field="${intervencija.adresaid.grad}">
         </div>
         <div class="form-group">
             <label for="postanskiBroj">Poštanski broj</label>
-            <input type="number" class="form-control" id="postanskiBroj" th:field="*{adresaid.pbroj}">
+            <input type="number" class="form-control" id="postanskiBroj" th:field="${intervencija.adresaid.pbroj}">
         </div>
         <div class="form-group">
             <label for="naziv">Naziv</label>
-            <input type="text" class="form-control" id="naziv" th:field="*{adresaid.naziv}">
+            <input type="text" class="form-control" id="naziv" th:field="${intervencija.adresaid.naziv}">
         </div>
         <div class="form-group">
             <label for="centar">Centar</label>
             <select class="form-control" id="centar">
                 <th:block th:each="centar : ${centri}">
-                    <option th:field="*{centar.centarid}" th:text="@{'Dispečerski Centar '+${centar.centarid}}"></option>
+                    <option th:if="${centar != null && intervencija.centar != null && centar.centarid == intervencija.centar.centarid}" th:value="${centar.centarid}" th:text="@{'Dispečerski Centar '+${centar.centarid}}" selected/>
+                    <option th:unless="${centar != null && intervencija.centar != null && centar.centarid == intervencija.centar.centarid}" th:value="${centar.centarid}" th:text="@{'Dispečerski Centar '+${centar.centarid}}"/>
                 </th:block>
             </select>
         </div>
@@ -48,8 +50,9 @@
         <div class="form-group">
             <label for="vozilo">Vozilo</label>
             <select class="form-control" id="vozilo" multiple>
-                <option>Opcija 1</option>
-                <option>Opcija 2</option>
+                <th:block th:each="vozilo : ${vozila}">
+                    <option th:value="${vozilo.registracija}" th:text="${vozilo}"/>
+                </th:block>
             </select>
         </div>
 
@@ -73,11 +76,11 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <th scope="row">1</th>
-            <td>Prvi izvještaj</td>
-            <td>2024-05-26 10:00</td>
-            <td>admin</td>
+        <tr th:each="izvjestaj : ${izvjestaji}">
+            <th scope="row" th:text="${izvjestaj.izvjestajid}"/>
+            <td th:text="${izvjestaj.sadrzaj}"/>
+            <td th:text="${#dates.format(izvjestaj.datvr, 'dd.MM.yyyy HH:mm')}"/>
+            <td th:text="${izvjestaj.clanhitnesluzbe}"/>
             <td>
                 <button class="btn btn-primary">Uredi</button>
                 <button class="btn btn-danger">Obriši</button>

@@ -2,6 +2,8 @@ package com.infsus.suhs.model;
 
 import jakarta.persistence.*;
 
+import java.util.Objects;
+
 //nije dovrseno zbog adrese
 @Entity
 @Table(name = "vozilo")
@@ -12,7 +14,7 @@ public class Vozilo {
     private String registracija;
 
     @Column(name = "status")
-    private String status;
+    private Boolean status;
 
     @Column(name = "kapacitet")
     private int kapacitet;
@@ -34,7 +36,7 @@ public class Vozilo {
     public Vozilo() {
     }
 
-    public Vozilo(String registracija, String status, int kapacitet, String uloga, Adresa adresa) {
+    public Vozilo(String registracija, Boolean status, int kapacitet, String uloga, Adresa adresa) {
         this.registracija = registracija;
         this.status = status;
         this.kapacitet = kapacitet;
@@ -50,12 +52,28 @@ public class Vozilo {
         this.registracija = registracija;
     }
 
-    public String getStatus() {
+    public Boolean getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Boolean status) {
         this.status = status;
+    }
+
+    public AdresaId getAdresaId() {
+        return adresaId;
+    }
+
+    public void setAdresaId(AdresaId adresaId) {
+        this.adresaId = adresaId;
+    }
+
+    public Adresa getAdresa() {
+        return adresa;
+    }
+
+    public void setAdresa(Adresa adresa) {
+        this.adresa = adresa;
     }
 
     public int getKapacitet() {
@@ -72,5 +90,23 @@ public class Vozilo {
 
     public void setUloga(String uloga) {
         this.uloga = uloga;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Vozilo vozilo = (Vozilo) o;
+        return Objects.equals(registracija, vozilo.registracija);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(registracija, status, kapacitet, uloga, adresaId, adresa);
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Vozilo-%s (%s)", uloga, registracija);
     }
 }

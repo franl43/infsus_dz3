@@ -1,14 +1,15 @@
 package com.infsus.suhs.controller;
 
+import com.infsus.suhs.model.Centar;
 import com.infsus.suhs.model.Intervencija;
-import com.infsus.suhs.service.AdresaService;
+import com.infsus.suhs.model.Vozilo;
+import com.infsus.suhs.service.CentarService;
 import com.infsus.suhs.service.IntervencijaService;
+import com.infsus.suhs.service.VoziloService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -18,8 +19,12 @@ public class IntervencijaController {
 
     @Autowired
     private IntervencijaService intervencijaService;
+    @Autowired
+    private CentarService centarService;
+    @Autowired
+    private VoziloService voziloService;
 
-    @GetMapping()
+    @GetMapping("*")
     public String getAllIntervencija(Model model) {
         List<Intervencija> intervencije = intervencijaService.getAllIntervencija();
         intervencije.forEach(System.out::println);
@@ -31,8 +36,16 @@ public class IntervencijaController {
     @GetMapping("/{id}")
     public String getIntervencijaById(Model model, @PathVariable long id) {
         Intervencija intervencija = intervencijaService.getIntervencijaById(id).orElse(null);
+
         if(intervencija != null) {
             model.addAttribute("intervencija", intervencija);
+            model.addAttribute("adresa", intervencija.getAdresa());
+            model.addAttribute("izvjestaji", intervencija.getIzvjestaji());
+            List<Centar> centri = centarService.getAllCentar();
+            model.addAttribute("centri", centri);
+
+            List<Vozilo> vozila = voziloService.getAllAvailableVozila();
+            model.addAttribute("vozila", vozila);
 
             return "Intervencija/Index";
         } else {
@@ -40,9 +53,17 @@ public class IntervencijaController {
         }
     }
 
-    @GetMapping("/edit/{id}")
-    public String editIntervencijaById(Model model, @PathVariable long id) {
-        System.out.println(model);
+    @PostMapping("/{id}")
+    public String editIntervencijaById(@ModelAttribute Intervencija intervencija, Model model, @PathVariable long id) {
+
+        model.addAttribute("intervencija", intervencija);
+        model.addAttribute("izvjestaji", intervencija.getIzvjestaji());
+        List<Centar> centri = centarService.getAllCentar();
+        model.addAttribute("centri", centri);
+
+        List<Vozilo> vozila = voziloService.getAllAvailableVozila();
+        model.addAttribute("vozila", vozila);
+
         return "redirect:/intervencija/" + id;
     }
 

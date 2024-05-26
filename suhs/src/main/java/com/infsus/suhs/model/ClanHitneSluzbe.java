@@ -54,11 +54,7 @@ public class ClanHitneSluzbe {
 
     @Override
     public String toString() {
-        return "ClanHitneSluzbe{" +
-                "korisnicko_ime='" + korisnickoime + '\'' +
-                ", korisnik=" + korisnik +
-                ", vozilo=" + vozilo +
-                '}';
+        return String.format("%s %s, %s", korisnik.getIme(), korisnik.getPrezime(), korisnik.getUloga());
     }
 
     @Override

@@ -1,6 +1,7 @@
 package com.infsus.suhs.model;
 
 import jakarta.persistence.Embeddable;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -11,14 +12,15 @@ public class ZoveId implements Serializable {
 
     private String oib;
     private Long centarid;
-    private Date dat_vr;
+    @DateTimeFormat(iso= DateTimeFormat.ISO.DATE)
+    private Date datvr;
 
     public ZoveId() {}
 
     public ZoveId(String oib, Long centarId) {
         this.oib = oib;
         this.centarid = centarId;
-        this.dat_vr = new Date();
+        this.datvr = new Date(new java.util.Date().getTime());
     }
 
     public String getOib() {
@@ -29,31 +31,32 @@ public class ZoveId implements Serializable {
         this.oib = oib;
     }
 
-    public Long getCentarId() {
+    public Long getCentarid() {
         return centarid;
     }
 
-    public void setCentarId(Long centarid) {
+    public void setCentarid(Long centarid) {
         this.centarid = centarid;
     }
 
-    public Date getDat_vr() {
-        return dat_vr;
+    public Date getDatvr() {
+        return datvr;
     }
 
-    public void setDat_vr(Date dat_vr) {
-        this.dat_vr = dat_vr;
+    public void setDatvr(Date datvr) {
+        this.datvr = datvr;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof ZoveId zoveId)) return false;
-        return Objects.equals(oib, zoveId.oib) && Objects.equals(centarid, zoveId.centarid) && Objects.equals(dat_vr, zoveId.dat_vr);
+        if (o == null || getClass() != o.getClass()) return false;
+        ZoveId zoveId = (ZoveId) o;
+        return Objects.equals(oib, zoveId.oib) && Objects.equals(centarid, zoveId.centarid) && Objects.equals(datvr, zoveId.datvr);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(oib, centarid, dat_vr);
+        return Objects.hash(oib, centarid, datvr);
     }
 }

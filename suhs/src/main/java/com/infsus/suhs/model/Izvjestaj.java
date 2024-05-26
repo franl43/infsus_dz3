@@ -1,6 +1,7 @@
 package com.infsus.suhs.model;
 
 import jakarta.persistence.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 import java.util.Objects;
@@ -18,6 +19,7 @@ public class Izvjestaj {
     private String sadrzaj;
 
     @Column(name = "datvr")
+    @DateTimeFormat(iso= DateTimeFormat.ISO.DATE)
     private Date datvr;
 
     @ManyToOne
@@ -38,11 +40,11 @@ public class Izvjestaj {
         this.clanhitnesluzbe = clanhitnesluzbe;
     }
 
-    public long getIzvjestajId() {
+    public long getIzvjestajid() {
         return izvjestajid;
     }
 
-    public void setIzvjestajId(long izvjestajid) {
+    public void setIzvjestajid(long izvjestajid) {
         this.izvjestajid = izvjestajid;
     }
 
@@ -54,11 +56,11 @@ public class Izvjestaj {
         this.sadrzaj = sadrzaj;
     }
 
-    public Date getDatVr() {
+    public Date getDatvr() {
         return datvr;
     }
 
-    public void setDat_vr(Date datvr) {
+    public void setDatvr(Date datvr) {
         this.datvr = datvr;
     }
 
@@ -70,11 +72,11 @@ public class Izvjestaj {
         this.intervencija = intervencija;
     }
 
-    public ClanHitneSluzbe getClanHitneSluzbe() {
+    public ClanHitneSluzbe getClanhitnesluzbe() {
         return clanhitnesluzbe;
     }
 
-    public void setClanHitneSluzbe(ClanHitneSluzbe clanhitnesluzbe) {
+    public void setClanhitnesluzbe(ClanHitneSluzbe clanhitnesluzbe) {
         this.clanhitnesluzbe = clanhitnesluzbe;
     }
 

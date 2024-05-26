@@ -1,6 +1,7 @@
 package com.infsus.suhs.model;
 
 import jakarta.persistence.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -17,6 +18,7 @@ public class Intervencija {
     private long intervencijaid;
 
     @Column(name = "datvr")
+    @DateTimeFormat(iso= DateTimeFormat.ISO.DATE)
     private Date datvr;
 
     @Column(name = "opis")
