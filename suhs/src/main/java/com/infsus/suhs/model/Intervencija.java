@@ -20,7 +20,6 @@ public class Intervencija {
     @Column(name = "opis")
     private String opis;
 
-    //ovo ne znam kak da spojim s adresom
     @Embedded
     private AdresaId adresaId;
 
@@ -39,7 +38,15 @@ public class Intervencija {
     public Intervencija() {
     }
 
-    public long getIntervencijaId() {
+    public Intervencija(Long intervencijaid, Date datvr, String opis, Adresa adresa, Centar centar) {
+        this.intervencijaid = intervencijaid;
+        this.datvr = datvr;
+        this.opis = opis;
+        this.adresa = adresa;
+        this.centar = centar;
+    }
+
+    public Long getIntervencijaId() {
         return intervencijaid;
     }
 
@@ -69,5 +76,21 @@ public class Intervencija {
 
     public void setCentar(Centar centar) {
         this.centar = centar;
+    }
+
+    public Date getDatvr() {
+        return datvr;
+    }
+
+    public void setDatvr(Date datvr) {
+        this.datvr = datvr;
+    }
+
+    public Adresa getAdresa() {
+        return adresa;
+    }
+
+    public void setAdresa(Adresa adresa) {
+        this.adresa = adresa;
     }
 }

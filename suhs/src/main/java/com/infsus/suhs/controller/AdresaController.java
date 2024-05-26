@@ -3,17 +3,14 @@ package com.infsus.suhs.controller;
 import com.infsus.suhs.model.Adresa;
 import com.infsus.suhs.model.AdresaId;
 import com.infsus.suhs.model.Centar;
-import com.infsus.suhs.model.Pozivatelj;
 import com.infsus.suhs.service.AdresaService;
 import com.infsus.suhs.service.CentarService;
 import com.infsus.suhs.utils.AdresaIdJson;
 import com.infsus.suhs.utils.AdresaJson;
-import com.infsus.suhs.utils.PozivateljJson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.swing.text.html.Option;
 import java.util.List;
 import java.util.Optional;
 

@@ -73,4 +73,21 @@ public class Vozilo {
     public void setUloga(String uloga) {
         this.uloga = uloga;
     }
+
+    public AdresaId getAdresaId() {
+        return adresaId;
+    }
+
+    public void setAdresaId(AdresaId adresaId) {
+        this.adresaId = adresaId;
+    }
+
+    public Adresa getAdresa() {
+        return adresa;
+    }
+
+    public void setAdresa(Adresa adresa) {
+        this.adresa = adresa;
+    }
+
 }
