@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Izvjestaj</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<body>
+    <header th:insert="Common/Header :: header"></header>
+    <div class="container mt-5">
+        <h1 class="text-center">Izvještaj</h1>
+
+        <form method="post" action="#" th:action="@{'/izvjestaj/'+${izvjestaj.izvjestajid}}" th:object="${izvjestaj}">
+            <div class="form-group">
+                <label for="datvr">Datum i vrijeme</label>
+                <input type="datetime-local" class="form-control" id="datvr" th:field="*{datvr}"/>
+            </div>
+
+            <div class="form-group">
+                <label for="sadrzaj">Sadržaj</label>
+                <textarea class="form-control" id="sadrzaj" rows="3" th:field="*{sadrzaj}"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="intervencija">Intervencija</label>
+                <select th:field="*{intervencija}"  class="form-control" id="intervencija">
+                    <th:block th:each="interv : ${intervencije}">
+                        <option th:value="${interv.intervencijaid}" th:text="${interv}"></option>
+                    </th:block>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="korisnik">Ispunio korisnik</label>
+                <select th:field="*{clanhitnesluzbe}" class="form-control" id="korisnik">
+                    <th:block th:each="clan : ${clanovi}">
+                        <option th:value="${clan.korisnickoIme}" th:text="${clan}"></option>
+                    </th:block>
+                </select>
+            </div>
+
+            <div class="d-flex justify-content-between mt-3">
+                <button type="submit" class="btn btn-success">Spremi</button>
+            </div>
+        </form>
+    </div>
+
+    <hr style="margin-top: 20px; ">
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

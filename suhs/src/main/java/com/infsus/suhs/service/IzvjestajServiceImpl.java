@@ -27,4 +27,12 @@ public class IzvjestajServiceImpl implements IzvjestajService {
     public Optional<Izvjestaj> getIzvjestajById(Long id) {
         return izvjestajRepository.findById(id);
     }
+
+    @Override
+    public Izvjestaj saveIzvjestaj(Izvjestaj izvjestaj) {
+        return izvjestajRepository.save(izvjestaj);
+    }
+
+    @Override
+    public void deleteIzvjestajById(Long id) { izvjestajRepository.deleteById(id); }
 }

@@ -2,6 +2,8 @@ package com.infsus.suhs.model;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 //nije dovrseno zbog adrese
@@ -32,6 +34,20 @@ public class Vozilo {
             @JoinColumn(name = "naziv", referencedColumnName = "naziv", insertable = false, updatable = false)
     })
     private Adresa adresa;
+
+    /*--------------------------------------------------------------------------------*/
+    @OneToMany(mappedBy = "vozilo")
+    private List<OdgovaraNa> odgovori = new ArrayList<>();
+
+    public List<OdgovaraNa> getOdgovori() {
+        return odgovori;
+    }
+
+    public void setOdgovori(List<OdgovaraNa> odgovori) {
+        this.odgovori = odgovori;
+    }
+
+    /*--------------------------------------------------------------------------------*/
 
     public Vozilo() {
     }

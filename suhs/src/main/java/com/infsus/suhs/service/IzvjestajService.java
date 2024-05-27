@@ -8,4 +8,6 @@ import java.util.Optional;
 public interface IzvjestajService {
     List<Izvjestaj> getAllIzvjestaj();
     Optional<Izvjestaj> getIzvjestajById(Long id);
+    Izvjestaj saveIzvjestaj(Izvjestaj izvjestaj);
+    void deleteIzvjestajById(Long id);
 }

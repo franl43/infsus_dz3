@@ -13,6 +13,8 @@ public class IntervencijaServiceImpl implements IntervencijaService {
 
     @Autowired
     private IntervencijaRepository intervencijaRepository;
+    @Autowired
+    private IzvjestajServiceImpl izvjestajServiceImpl;
 
     public IntervencijaServiceImpl(IntervencijaRepository intervencijaRepository) {
         this.intervencijaRepository = intervencijaRepository;
@@ -29,7 +31,15 @@ public class IntervencijaServiceImpl implements IntervencijaService {
     }
 
     @Override
+    public Intervencija saveIntervencija(Intervencija intervencija) {
+        return intervencijaRepository.save(intervencija);
+    }
+
+    @Override
     public void deleteIntervencija(Long id) {
+        Optional<Intervencija> intervencija = intervencijaRepository.findById(id);
+        intervencija.get().getIzvjestaji()
+                .forEach(i -> izvjestajServiceImpl.deleteIzvjestajById(i.getIzvjestajid()));
         intervencijaRepository.deleteById(id);
     }
 }

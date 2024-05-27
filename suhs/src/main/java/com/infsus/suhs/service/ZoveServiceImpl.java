@@ -45,10 +45,14 @@ public class ZoveServiceImpl implements ZoveService {
     }
 
     public List<Zove> getZoveByPozivatelj(String oib) {
-        return zoveRepository.findByPozivateljOib(oib);
+        return zoveRepository.findAll()
+                .stream().filter(zove -> zove.getZoveId().getOib().equals(oib))
+                .toList();
     }
 
     public List<Zove> getZoveByCentar(Long centarId) {
-        return zoveRepository.findByCentarCentarId(centarId);
+        return zoveRepository.findAll()
+                .stream().filter(zove -> zove.getCentar().getCentarid() == centarId)
+                .toList();
     }
 }

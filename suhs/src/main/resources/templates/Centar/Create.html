@@ -5,23 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Centar</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 <body>
+<header th:insert="Common/Header :: header"></header>
 <div class="container mt-5">
     <h1 class="text-center">Centar</h1>
-    <!--<div class="d-flex justify-content-between mb-3">
-        <button class="btn btn-primary">Prethodni</button>
-        <button class="btn btn-primary">Sljedeći</button>
-    </div> -->
 
-    <form>
+    <form method="post" action="#" th:action="@{/centar/create}" th:object="${centar}">
         <div class="form-group">
             <label for="broj">Broj</label>
-            <input type="text" class="form-control" id="broj">
+            <input type="text" class="form-control" id="broj" th:field="*{broj}"/>
         </div>
         <div class="form-group">
             <label for="kapacitet">Kapacitet</label>
-            <input type="number" class="form-control" id="kapacitet" min=0>
+            <input type="number" class="form-control" id="kapacitet" min=0 th:field="*{kapacitet}"/>
         </div>
 
         <div class="d-flex justify-content-between mt-3">
@@ -31,7 +29,7 @@
     </form>
 
     <hr style="margin-top: 20px; ">
-
+</div>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

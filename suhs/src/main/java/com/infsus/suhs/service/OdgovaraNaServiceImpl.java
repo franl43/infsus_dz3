@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -36,11 +37,15 @@ public class OdgovaraNaServiceImpl implements OdgovaraNaService {
     }
 
     public List<OdgovaraNa> getOdgovaraNaByIntervencija(Long id) {
-        return odgovaraNaRepository.findByIntervencijaIntervencijaId(id);
+        return odgovaraNaRepository.findAll()
+                .stream().filter(odgovaraNa -> odgovaraNa.getOdgovaraNaId().getIntervencijaId() == id)
+                .toList();
     }
 
     public List<OdgovaraNa> getOdgovaraNaByVozilo(String registracija) {
-        return odgovaraNaRepository.findByVoziloRegistracija(registracija);
+        return odgovaraNaRepository.findAll()
+                .stream().filter(odgovaraNa -> odgovaraNa.getOdgovaraNaId().getRegistracija().equals(registracija))
+                .toList();
     }
 
     @Override

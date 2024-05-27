@@ -12,7 +12,7 @@
 <div class="container mt-5">
     <h1 class="text-center">Intervencija</h1>
 
-    <form action="#" method="post" th:action="@{'/intervencija/'+${intervencija.intervencijaid}}" th:object="${intervencija}">
+    <form method="post" action="#" th:action="@{/intervencija/create}" th:object="${intervencija}">
         <div class="form-group">
             <label for="datumVrijeme">Datum i vrijeme</label>
             <input type="datetime-local" class="form-control" id="datumVrijeme" th:field="*{datvr}"/>
@@ -38,22 +38,21 @@
             <label for="centar">Centar</label>
             <select th:filed="*{centar}" class="form-control" id="centar">
                 <th:block th:each="centar : ${centri}">
-                    <option th:value="${centar.centarid}" th:text="${centar}"/>
+                    <option th:value="${centar.centarid}" th:text="${centar}"></option>
                 </th:block>
             </select>
         </div>
-
         <div class="form-group">
             <label for="vozilo">Vozilo</label>
-            <select th:filed="*{odgovori}" class="form-control" id="vozilo">
+            <select th:filed="*{odgovori}" class="form-control" id="vozilo" multiple="multiple">
                 <th:block th:each="vozilo : ${vozila}">
-                    <option th:value="${vozilo.registracija}" th:text="${vozilo}"/>
+                    <option th:value="${vozilo.registracija}" th:text="${vozilo}"></option>
                 </th:block>
             </select>
         </div>
-
         <div class="d-flex justify-content-between mt-3">
             <button type="submit" class="btn btn-success">Spremi</button>
+            <button type="reset" class="btn btn-danger">Obriši</button>
         </div>
 
         <hr style="margin-top: 20px; ">
@@ -76,9 +75,9 @@
             <td th:text="${izvjestaj.sadrzaj}"/>
             <td th:text="${#dates.format(izvjestaj.datvr, 'dd.MM.yyyy HH:mm')}"/>
             <td th:text="${izvjestaj.clanhitnesluzbe}"/>
-            <td class="btn-group" role="group" aria-label="crud buttons">
-                <a th:href="@{'/izvjestaj/'+${izvjestaj.izvjestajid}}" class="btn btn-warning"><i class="bi bi-pencil"></i></a>
-                <a th:href="@{'/izvjestaj/delete/'+${izvjestaj.izvjestajid}}" class="btn btn-danger"><i class="bi bi-trash"></i></a>
+            <td>
+                <button class="btn btn-primary">Uredi</button>
+                <button class="btn btn-danger">Obriši</button>
             </td>
         </tr>
         </tbody>

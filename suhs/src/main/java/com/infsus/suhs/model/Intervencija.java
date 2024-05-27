@@ -54,6 +54,20 @@ public class Intervencija {
 
     /*--------------------------------------------------------------------------------*/
 
+    /*--------------------------------------------------------------------------------*/
+    @OneToMany(mappedBy = "intervencija")
+    private List<OdgovaraNa> odgovori = new ArrayList<>();
+
+    public List<OdgovaraNa> getOdgovori() {
+        return odgovori;
+    }
+
+    public void setOdgovori(List<OdgovaraNa> odgovori) {
+        this.odgovori = odgovori;
+    }
+
+    /*--------------------------------------------------------------------------------*/
+
     public Intervencija() {
     }
 
@@ -107,13 +121,6 @@ public class Intervencija {
 
     @Override
     public String toString() {
-        return "Intervencija{" +
-                "intervencijaid=" + intervencijaid +
-                ", datvr=" + datvr +
-                ", opis='" + opis + '\'' +
-                ", adresaid=" + adresaid +
-                ", adresa=" + adresa +
-                ", centar=" + centar +
-                '}';
+        return String.format("Intervencija %d-%s", intervencijaid, opis);
     }
 }
